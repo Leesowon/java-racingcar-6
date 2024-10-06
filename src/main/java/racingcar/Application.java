@@ -14,8 +14,8 @@ public class Application {
         8. test
         */
 
-        EnterPlayerCars start = new EnterPlayerCars();
-        start.setPlayerCars();
+        PlayGame playGame = new PlayGame();
+        playGame.playGame();
 
     }
 }
