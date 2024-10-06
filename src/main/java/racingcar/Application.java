@@ -14,8 +14,8 @@ public class Application {
         8. test
         */
 
-        PlayGame playGame = new PlayGame();
-        playGame.playGame();
+        StartGame playGame = new StartGame();
+        playGame.startGame();
 
     }
 }

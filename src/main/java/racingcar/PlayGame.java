@@ -1,28 +1,50 @@
 package racingcar;
 
-import camp.nextstep.edu.missionutils.Console;
+import java.util.*;
 
-import java.util.ArrayList;
-import java.util.List;
+import camp.nextstep.edu.missionutils.Randoms;
 
 public class PlayGame {
+    private static int attempt = 0 ;
+    List<String> players = new ArrayList<>();
+    static Map<String, String> playerdic = new HashMap<>();
 
-    public PlayGame() { }
-
-    public void playGame() {
-        System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
-        String input = Console.readLine();
-        EnterPlayerCars players = new EnterPlayerCars(input);
-
-        System.out.println("시도할 회수는 몇회인가요?");
-        int inputAttempts = Integer.parseInt(Console.readLine());
-        GetNumberOfAttempts attempts = new GetNumberOfAttempts();
-        attempts.setAttempts(inputAttempts);
-
-        System.out.println("실행 결과");
-
-
+    public PlayGame(List<String> players, int attempt) {
+        this.players = players;
+        this.attempt = attempt;
     }
 
+    // 플레이어 & 점수 초기화
+//    public static Map<String, String> makePlayerDict(List<String> players){
+//        for (String player : players) {
+//            playerdic.put(player, "");
+//        }
+//        return playerdic;
+//    }
 
+    public static void makePlayerDict(List<String> players){
+        for (String player : players) {
+            playerdic.put(player, "");
+        }
+    }
+
+    public static void run() {
+        Set<String> keys = playerdic.keySet(); // 플레이어 이름 가져오기
+
+        while (attempt > 0) {
+            for (String key : keys) {
+                int continueNum = Randoms.pickNumberInRange(0, 9);
+                if (continueNum > 3) {
+                    playerdic.put(key, playerdic.get(key) + "-");
+                }
+            }
+            attempt -= 1;
+        }
+    }
+
+    public static void printResult() {
+        for (Map.Entry<String, String> entry : playerdic.entrySet()) {
+            System.out.println(entry.getKey() + " : " + entry.getValue());
+        }
+    }
 }
