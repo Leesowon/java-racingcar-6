@@ -23,10 +23,11 @@ public class StartGame {
         PlayGame.printResult();
 
         System.out.print("최종 우승자 : ");
-
-
-
+        new PrintWinner(PlayGame.getPlayerdic());
+        PrintWinner.howLongGo();
+//        PrintWinner.printWinnerMap();
+        PrintWinner.findWinnerList();
+//        PrintWinner.printWinnerList();
+        PrintWinner.printWinner();
     }
-
-
 }

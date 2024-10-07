@@ -22,6 +22,15 @@ public class PlayGame {
 //        return playerdic;
 //    }
 
+
+    public static Map<String, String> getPlayerdic() {
+        return playerdic;
+    }
+
+//    public static void setPlayerdic(Map<String, String> playerdic) {
+//        PlayGame.playerdic = playerdic;
+//    }
+
     public static void makePlayerDict(List<String> players){
         for (String player : players) {
             playerdic.put(player, "");
