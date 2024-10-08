@@ -34,8 +34,15 @@ public class PlayerInput {
     }
 
     private void checkIllegal() throws IllegalArgumentException {
+        checkPeople();
         String[] players = input.split(",");
         checkPlayerNameLength(players);
+    }
+
+    private void checkPeople() throws IllegalArgumentException {
+        if (!input.contains(",")) {
+            throw new IllegalArgumentException("2명 이상 게임에 참여해야 합니다.");
+        }
     }
 
     private void checkPlayerNameLength(String[] players) throws IllegalArgumentException {
