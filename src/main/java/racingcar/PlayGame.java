@@ -22,7 +22,6 @@ public class PlayGame {
 //        return playerdic;
 //    }
 
-
     public static Map<String, String> getPlayerdic() {
         return playerdic;
     }

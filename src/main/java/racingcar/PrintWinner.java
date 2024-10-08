@@ -1,7 +1,5 @@
 package racingcar;
 
-import org.mockito.internal.util.StringUtil;
-
 import java.util.*;
 
 public class PrintWinner {
@@ -13,26 +11,23 @@ public class PrintWinner {
         this.playerdic = playerdic;
     }
 
-    public static Map<String, Integer> howLongGo () {
+    public static Map<String, Integer> distanceMove () {
         for (Map.Entry<String,String> entry : playerdic.entrySet()) {
-            int count = 0;
-            String str = entry.getValue();
-            for (int i=0 ; i<str.length() ; i++) {
-                if (str.charAt(i) == '-') {
-                    count++;
-                }
-            }
+            int count = countDashes(entry.getValue());
             winnerMap.put(entry.getKey(), count);
         }
         return winnerMap;
     }
 
-//    public static void printWinnerMap () {
-//        System.out.println("winnerMap");
-//        for (Map.Entry<String, Integer> entry : winnerMap.entrySet()) {
-//            System.out.println("key : " + entry.getKey() + ", value : " + entry.getValue());
-//        }
-//    }
+    private static int countDashes(String str) {
+        int count = 0;
+        for (int i=0 ; i<str.length() ; i++) {
+            if (str.charAt(i) == '-') {
+                count++;
+            }
+        }
+        return count;
+    }
 
     public static List<String> findWinnerList () {
         int max = Integer.MIN_VALUE;
@@ -43,18 +38,10 @@ public class PrintWinner {
                 winnerList.add(entry.getKey());
             } else if (max == entry.getValue()) {
                 winnerList.add(entry.getKey());
-            } else {
-                continue;
             }
         }
         return winnerList;
     }
-
-//    public static void printWinnerList() {
-//        for (int i = 0 ; i < winnerList.size() ; i++) {
-//            System.out.println(winnerList.get(i));
-//        }
-//    }
 
     public static void printWinner() {
         String winner = winnerList.toString();

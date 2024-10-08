@@ -50,7 +50,6 @@ public class PlayerInput {
         }
     }
 
-
     public void checkPlayerCars() {
         for(int i=0 ; i<playerCars.size() ; i++) {
             System.out.println(playerCars.get(i));
