@@ -14,8 +14,7 @@ public class Application {
         8. test
         */
 
-        StartGame playGame = new StartGame();
-        playGame.startGame();
+        StartGame.startGame();
 
     }
 }

@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class PlayerInput {
+    String input = "";
     List<String> playerCars = new ArrayList<>();
 
     public PlayerInput() { }
@@ -12,10 +13,21 @@ public class PlayerInput {
         return playerCars;
     }
 
-    public void setPlayerList(String input) {
+    public void setPlayerList(String input) throws IllegalArgumentException {
+        this.input = input;
+        checkIllegal();
         String[] players = input.split(",");
-        for (int i = 0 ; i<players.length ; i++) {
+        for (int i = 0; i < players.length; i++) {
             playerCars.add(players[i]);
+        }
+    }
+
+    private void checkIllegal() throws IllegalArgumentException {
+        String[] players = input.split(",");
+        for (String player : players) {
+            if (player.length() > 5) {
+                throw new IllegalArgumentException("자동차 이름은 5글자 이하로 작성해야합니다.");
+            }
         }
     }
 

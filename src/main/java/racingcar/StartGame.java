@@ -6,12 +6,11 @@ public class StartGame {
 
     public StartGame() { }
 
-    public void startGame() {
+    public static void startGame() {
         System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
-        String input = Console.readLine(); // 문자열로 입력 받고,
+        String input = Console.readLine();
         PlayerInput players = new PlayerInput();
         players.setPlayerList(input);
-//        players.checkPlayerCars();
 
         System.out.println("시도할 회수는 몇회인가요?");
         int inputAttempts = Integer.parseInt(Console.readLine());
@@ -25,9 +24,7 @@ public class StartGame {
         System.out.print("최종 우승자 : ");
         new PrintWinner(PlayGame.getPlayerdic());
         PrintWinner.howLongGo();
-//        PrintWinner.printWinnerMap();
         PrintWinner.findWinnerList();
-//        PrintWinner.printWinnerList();
         PrintWinner.printWinner();
     }
 }
