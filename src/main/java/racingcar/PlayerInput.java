@@ -16,20 +16,40 @@ public class PlayerInput {
     public void setPlayerList(String input) throws IllegalArgumentException {
         this.input = input;
         checkIllegal();
-        String[] players = input.split(",");
-        for (int i = 0; i < players.length; i++) {
-            playerCars.add(players[i]);
+        List<String> players = splitPlayers(input);
+        addPlayerCarsList(players);
+    }
+
+    private List<String> splitPlayers(String input) {
+        String[] playersArray = input.split(",");
+        List<String> playersList = new ArrayList<>();
+        for (String player : playersArray) {
+            playersList.add(player);
         }
+        return playersList;
+    }
+
+    private void addPlayerCarsList(List<String> players) {
+        playerCars.addAll(players);
     }
 
     private void checkIllegal() throws IllegalArgumentException {
         String[] players = input.split(",");
+        checkPlayerNameLength(players);
+    }
+
+    private void checkPlayerNameLength(String[] players) throws IllegalArgumentException {
         for (String player : players) {
-            if (player.length() > 5) {
-                throw new IllegalArgumentException("자동차 이름은 5글자 이하로 작성해야합니다.");
-            }
+            validatePlayerNameLength(player);
         }
     }
+
+    private void validatePlayerNameLength(String player) {
+        if (player.length() > 5) {
+            throw new IllegalArgumentException("자동차 이름은 5글자 이하로 작성해야 합니다.");
+        }
+    }
+
 
     public void checkPlayerCars() {
         for(int i=0 ; i<playerCars.size() ; i++) {
